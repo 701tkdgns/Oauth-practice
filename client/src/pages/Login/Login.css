@@ -61,6 +61,7 @@
     color: white;
     display: flex;
     margin-bottom: 20px;
+    cursor: pointer;
 }
 
 .google{

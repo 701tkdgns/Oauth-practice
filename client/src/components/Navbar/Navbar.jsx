@@ -3,25 +3,25 @@ import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 
-const Navbar = ({user}) => {
-  return (
-    <div className='navbar'>
-        <span className='logo'> <Link className='title__link' to="/">제목</Link> </span>
-        {user ? (
-        <ul className='list'>
-            <li className="listItem">
-                <img src="../../assets/client-3.png" alt="" className='avatar' />
-            </li>
-            <li className="listItem">
-                Psh
-            </li>
-            <li className="listItem">
-                Logout
-            </li>            
-        </ul>
-        ) : (<Link className='title__link' to="login">Login</Link>)}
-    </div>
-  )
-}
+const Navbar = ({ user }) => {
+    const logout = () => {
+        window.open("http://localhost:5000/auth/logout", "_self");
+    };
+    return (
+        <div className='navbar'>
+            <span className='logo'> <Link className='title__link' to="/">App</Link> </span>
+            {user ? (
+                <ul className='list'>
+                    <li className="listItem">
+                        <img src={user.photos[0].value} alt="" className='avatar' />
+                    </li>
+                    <li className="listItem">{user.displayName}</li>
+                    <li className="listItem" onClick={logout}>Logout</li>
+                </ul>
+            ) : (<Link className='title__link' to="login">Login</Link>
+            )}
+        </div>
+    );
+};
 
-export default Navbar
+export default Navbar;
